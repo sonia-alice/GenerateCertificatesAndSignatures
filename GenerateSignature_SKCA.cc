@@ -1,3 +1,11 @@
+/*
+* This code generates the signatures for the 
+* public keys (PK from 2 to 55) using the private 
+* key of the CA (SK 1). The signatures are stored
+* in a folder in the home directory called "temporary"
+* with the file names - "signPK#.dat".
+*/
+
 #include <iostream>
 #include <vector> 
 #include <sstream>
@@ -23,7 +31,6 @@ int main(int argc, const char* argv[])
     FileSource fs2( "public.ec.der", true  );
 
     ofstream wfile;
-    //wfile.open("signPK.dat", ios::out|ios::binary);
     for (int i=1; i<55;i++){
         std::string fileName = "/home/sonia/temporary/signPK" + std::to_string(i) + ".dat";
         wfile.open(fileName, ios::out|ios::binary);
