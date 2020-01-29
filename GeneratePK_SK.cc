@@ -1,3 +1,9 @@
+/*
+* This code generates 55 sets of Public Keys and Private keys
+* and stores them in the files: public.ec.der and private.ec.der
+* respectively.
+*/
+
 #include <iostream>
 #include <sstream>
 #include "/usr/include/crypto++/eccrypto.h"
