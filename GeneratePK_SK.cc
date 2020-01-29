@@ -22,9 +22,6 @@ int main(int argc, const char* argv[])
     while (i<55){
         ECDSA<ECP, SHA256>::PrivateKey k;
         k.Initialize( prng, ASN1::secp256r1() );
-        //ECDSA<ECP, SHA256>::Signer signer(k);
-        //FileSink fs2( "signer.ec.der", true /*binary*/ );
-        //signer.AccessKey().Save( fs2 );
 
         ECDSA<ECP, SHA256>::PublicKey publicKey;
         k.MakePublicKey(publicKey);
@@ -42,9 +39,6 @@ int main(int argc, const char* argv[])
             k.Save( fs1 );
             i++;
         }
-        //ECDSA<ECP, SHA256>::Verifier verifier(publicKey);
-        //FileSink fs4( "verifier.ec.der", true /*binary*/ );
-        //verifier.AccessKey().Save( fs4 );
     }
 
     return 0;
