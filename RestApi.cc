@@ -1,3 +1,10 @@
+/*
+* This code is used as the C++ code for executing 
+* the different transactions for the Blockchain - REST API 
+* calls. You can use this code with the veins application 
+* to execute the different transactions.
+*/
+
 #include "/usr/include/crypto++/eccrypto.h"
 #include "/usr/include/crypto++/osrng.h"
 #include "/usr/include/crypto++/oids.h"
@@ -19,37 +26,6 @@ using namespace web::http::client;          // HTTP client features
 using namespace concurrency::streams;       // Asynchronous streams
 using namespace CryptoPP;
 using namespace std; 
-
-/*string_t findVID (int pseudoID1)
-{
-    http_client client(std::string("http://localhost:3000/api/Vehicle"));
-    http_response response = client.request(methods::GET).get();
-    if(response.status_code() == status_codes::OK)
-    {
-        const utility::string_t body = response.extract_string().get();
-        int i = body.find(std::string(std::to_string(pseudoID1)));
-        std::string VID = body.substr(i-31,17);
-        return VID;
-    }
-    return std::string("failed");
-}*/
-
-/*std::vector<string_t> findValidPseudnm()
-{
-    http_client client(std::string("http://localhost:3000/api/queries/selectAllValidVehicles"));
-    http_response response = client.request(methods::GET).get();
-    std::vector<string_t> validPsynm;
-    if(response.status_code() == status_codes::OK)
-    {
-        utility::string_t body = response.extract_string().get();
-        for(std::string::iterator it=body.begin(); it!=body.end()-1; it=it+171)
-        {  
-            string_t value = body.substr(it-body.begin(), 171);
-            validPsynm.push_back(value.substr(83,8));
-        } 
-    }
-    return validPsynm;
-}*/
 
 bool verifyPseudnm(std::string pnm)
 {
@@ -172,7 +148,9 @@ void readmitVehicle(std::string vID, std::string pnm1, std::string pnm2, std::st
         std::cout << body << std::endl;
     }
 }
-
+//This code will generate n no. of vehicles in a sequencial order
+//in the Blockchain. Ensure that you have generated n no. of PK using 
+//the code file - GeneratePK_SK.cc
 bool createInputBC(int n){
     std::string vid = "1USWE1GHTY7";
     long num = 800000;
